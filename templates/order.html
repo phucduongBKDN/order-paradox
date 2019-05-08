@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>order</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>MENU</h1>
+    <h6>cơm gà, cơm chang canh, bánh canh cá lóc, cơm thịt kho tộ<h6>    
+    <br>
+    <form action="" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" style="width:50%;" placeholder="Fullname" name="fullname" value="{{
+          request.form.fullname }}">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" style="width:50%;" placeholder="Fepartment" name="department"
+                   value="{{
+          request.form.department }}">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" style="width:50%;" placeholder="Your order" name="order"
+                   value="{{
+          request.form.order }}">
+        </div>
+        <input class="btn btn-success" type="submit" value="order">
+    </form>
+    
+        {% if name %}
+    <p class="error"><strong>name:</strong> {{ name }}
+        {% endif %}
+        
+</div>
+</body>
+</html>

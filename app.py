@@ -4,23 +4,26 @@ import pandas as pd
 app = Flask(__name__)
 header = ['name', 'department', 'order']
 orders = pd.DataFrame(columns=header)
-
+menu = ""
 
 @app.route('/')
 def welcome():
     return redirect('/login')
 
-@app.route('/manage')
+@app.route('/manage',methods=['GET', 'POST'])
 def manage():
-    global orders
-    return render_template('manage.html',orders = orders)
+    global orders,menu
+    if request.method == 'POST':
+        if(request.form['menu']):
+            menu = request.form['menu']
+    return render_template('manage.html',orders = orders, menu = menu)
 
 @app.route('/order', methods=['GET', 'POST'])
 def order():
     name = ""
     department = ""
     order = ""
-    global orders
+    global orders, menu
     if request.method == 'POST':
         if(request.form['fullname']):
             name = request.form['fullname']
@@ -30,7 +33,7 @@ def order():
             order = request.form['order']
         orders = orders.append({'fullname':name,'department':department,'order':order},ignore_index=True)
         return redirect('/login')
-    return render_template('order.html')
+    return render_template('order.html', menu = menu)
 
 # Route for handling the login page logic
 @app.route('/login', methods=['GET', 'POST'])

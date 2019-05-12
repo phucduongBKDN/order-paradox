@@ -8,8 +8,20 @@
 </head>
 <body>
 <div class="container">
-    <h1>list orders</h1>
+  <h1>Menu</h1>
+    {% if menu %}
+    <p class="menu"><strong>menu today:</strong> {{ menu }}
+        {% endif %}
+  <h2>edit menu</h2>
+  <form method="post">
+    <div class="form-group">
+    <textarea class="form-control" id="ta-menu" rows="3" name="menu" placeholder="" value="{{
+          request.form.order }}" ></textarea>
+    </div>
+    <input class="btn btn-success" type="submit" value="submit">
+  </form>
     <br>
+    <h1>list orders</h1>
     <table class="table">
   <thead>
     <tr>
@@ -29,6 +41,8 @@
     {% endfor %}
     </tr>
   </tbody>
+  <br>
+  
 </table>
 </div>
 </body>

@@ -35,8 +35,7 @@ def order():
         return redirect('/login')
     return render_template('order.html', menu = menu)
 
-# Route for handling the login page logic
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods = ['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
@@ -44,11 +43,10 @@ def login():
             return redirect('/manage')
         if request.form['username'] == 'user' and request.form['password'] == 'user':
             return redirect('/order')
-        error = "nhap sai ten hoac mat khau"
+        error = "wrong name or password"
     return render_template('login.html', error=error)
 
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5100, debug=True)
     print(orders)
-    #de t show cho
